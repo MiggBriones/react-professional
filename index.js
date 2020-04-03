@@ -1,25 +1,36 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-function SaludarEnIdiomas({idioma}){
-  if(idioma === "es"){
-    return <span>Hola</span>;
-  } else{ 
-    return <span>Hello</span>;
+const nombres = [
+  'Miguel',
+  'Soler',
+  'Zavala',
+  'Moi',
+  'Papu'
+]
+
+function getNombres() {
+  const elementosLista = [];
+  for(var i = 0; i <nombres.length; i++) {
+    elementosLista.push(<li>{ nombres[i] }</li>);
   }
+  return elementosLista;
 }
 
-const Saludo = ()=> {
-  const nombre = 'Miguel';
-  return(
-    <p>
-      <SaludarEnIdiomas idioma="es" /> { `${nombre} =) ` }, mi componente de saludo.
-    </p>
+const NombresUno = () =>{
+  return <ul>{ getNombres() }</ul>
+}
+
+const Nombres = () =>{
+  return (
+    <ul>{
+    nombres.map( nombre => <li>{nombre}</li> )  
+    }</ul>
   )
 }
 
 const App = () => {
-  return <h1> <Saludo /> </h1>;
+  return <h1> <Nombres /> </h1>;
 }
 
 
